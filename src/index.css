@@ -9,8 +9,8 @@
 }
 
 .glassmorphism {
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  background:  #100e34;
+  box-shadow: 0 8px 32px 0  #100e34;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
@@ -45,7 +45,7 @@
 
 @layer base {
   body {
-    @apply font-primary text-lg leading-8 text-white bg-main bg-no-repeat bg-cover;
+    @apply font-primary text-lg leading-8 text-white  bg-responsive lg:bg-main bg-no-repeat bg-cover;
   }
   .h2 {
     @apply font-primary text-[32px] mb-6 tracking-[10%] uppercase;

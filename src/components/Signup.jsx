@@ -25,9 +25,9 @@ const Signup = () => {
 
   return (
     <div className="h-screen">
-      <div className="flex justify-left h-full">
+      <div className="flex justify-center items-center h-full">
         <form onSubmit={handleSubmit}>
-          <div className="flex h-full px-10 py-16 bg-[#100e34]">
+          <div className="flex px-10 py-16 glassmorphism">
             <div className="flex flex-col justify-between items-center">
               <div className="flex flex-col gap-y-5 items-center">
                 <div className="mb-10">
@@ -57,7 +57,7 @@ const Signup = () => {
                   name="password"
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <div className="flex mt-2 gap-x-2">
+                <div className="flex mt-2 gap-x-3">
                   <a href="" className="btn-yellow px-7 p-2">
                     <FaGoogle />
                   </a>
@@ -69,13 +69,13 @@ const Signup = () => {
                   </a>
                 </div>
               </div>
-              <div className="flex flex-col items-center ">
-                <button type="submit" className="btn p-4">
-                  <FaArrowRightLong />
+              <div className="flex flex-col items-center w-full ">
+                <button type="submit" className="flex justify-center btn w-full items-center mt-4 p-2">
+                  <FaArrowRightLong  className="items-center"/>
                 </button>
                 <Link
                   to="/login"
-                  className="text-xs opacity-30 mt-10 hover:underline"
+                  className="text-xs opacity-30 mt-8 hover:underline"
                 >
                   <p>Already have an account?</p>
                 </Link>

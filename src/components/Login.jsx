@@ -3,6 +3,7 @@ import { FaGoogle, FaFacebook, FaApple } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import apiClient from "../utils/api";
+import { Bounce, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from "../contexts/AuthProvider.jsx";
 
@@ -19,8 +20,23 @@ const Login = () => {
       const response = await apiClient.post("/login", { email, password });
       console.log(response.data);
       if (response.data.message === "Login successful") {
-        login("dummyToken")
-        navigate('/home');
+        toast.success(`Welcome`, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Bounce,
+          onClose: () => {
+            setTimeout(() => {
+              login('dummyToken');
+              navigate('/home');
+            }, 500);
+          },
+        });
       } 
     } catch (error) {
       console.log('Error logging in : ', error);
@@ -30,9 +46,10 @@ const Login = () => {
 
   return (
     <div className="h-screen">
-      <div className="flex justify-left h-full ">
+      <div className="flex justify-center h-full items-center">
+        <ToastContainer />
         <form onSubmit={handleSubmit}>
-          <div className="flex h-full px-10 py-16 bg-[#100e34]">
+          <div className="flex px-10 py-16 glassmorphism ">
             <div className="flex flex-col justify-between items-center">
               <div className="flex flex-col gap-y-5 items-center">
                 <div className="mb-10">
@@ -53,7 +70,7 @@ const Login = () => {
                   placeholder="Password"
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <div className="flex mt-2 gap-x-2">
+                <div className="flex mt-2 gap-x-3">
                   <a href="/" className="btn-yellow px-7 p-2">
                     <FaGoogle />
                   </a>
@@ -65,13 +82,13 @@ const Login = () => {
                   </a>
                 </div>
               </div>
-              <div className="flex flex-col items-center ">
-                <button type="submit" className="btn p-4">
-                  <FaArrowRightLong />
+              <div className="flex flex-col items-center w-full ">
+                <button type="submit" className="flex justify-center btn w-full items-center mt-4 p-2">
+                  <FaArrowRightLong  className="items-center"/>
                 </button>
                 <Link
                   to="/signup"
-                  className="text-xs opacity-30 mt-10 hover:underline"
+                  className="text-xs opacity-30 mt-8 hover:underline"
                 >
                   <p>Create Account</p>
                 </Link>
