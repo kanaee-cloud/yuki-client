@@ -2,12 +2,13 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { FaGoogle, FaFacebook, FaApple } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { toast } from 'react-toastify';
 import apiClient from "../utils/api";
 import 'react-toastify/dist/ReactToastify.css';
-import { Bounce } from 'react-toastify';
+import { useAuth } from "../contexts/AuthProvider.jsx";
+
 
 const Login = () => {
+  const { login } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -18,32 +19,12 @@ const Login = () => {
       const response = await apiClient.post("/login", { email, password });
       console.log(response.data);
       if (response.data.message === "Login successful") {
-        toast.success('🦄 Wow so easy!', {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
+        login("dummyToken")
         navigate('/home');
-      }
+      } 
     } catch (error) {
       console.log('Error logging in : ', error);
-      toast.error('Failed to login. Please try again.', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-      });
+      navigate('/invalid');
     }
   };
 
@@ -61,7 +42,7 @@ const Login = () => {
                 </div>
                 <h1 className="text-xl font-semibold">Login</h1>
                 <input
-                  type="text"
+                  type="email"
                   className="neumorphism p-1 px-4 text-md placeholder:text-sm placeholder:opacity-50 outline-none"
                   placeholder="Email"
                   onChange={(e) => setEmail(e.target.value)}

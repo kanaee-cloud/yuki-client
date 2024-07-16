@@ -8,30 +8,39 @@
   box-shadow: 9px 9px 17px #070614, -5px -5px 17px #1d1a50;
 }
 
-.btn{
-  background-color: #100e34;
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.btn {
+  background-color: transparent;
   color: #099ffc;
   border: 1px solid #099ffc;
   border-radius: 10px;
 }
 
-.btn:hover{
+.btn:hover {
   background-color: #099ffc;
   color: #100e34;
-  transition: all 0.5s ease; 
+  transition: all 0.5s ease;
 }
 
-.btn-yellow{
-  background-color: #100e34;
+.btn-yellow {
+  background-color: transparent;
   color: #f9d949;
   border: 1px solid #f9d949;
   border-radius: 10px;
 }
 
-.btn-yellow:hover{
+.btn-yellow:hover {
   background-color: #f9d949;
   color: #100e34;
-  transition: all 0.5s ease; 
+  transition: all 0.5s ease;
 }
 
 @layer base {

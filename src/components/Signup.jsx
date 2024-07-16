@@ -25,7 +25,7 @@ const Signup = () => {
 
   return (
     <div className="h-screen">
-      <div className="flex justify-left h-full ">
+      <div className="flex justify-left h-full">
         <form onSubmit={handleSubmit}>
           <div className="flex h-full px-10 py-16 bg-[#100e34]">
             <div className="flex flex-col justify-between items-center">
