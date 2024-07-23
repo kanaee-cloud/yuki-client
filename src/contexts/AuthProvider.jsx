@@ -4,15 +4,19 @@ import PropTypes from 'prop-types';
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [token, setToken] = useState(null);
+    const [token, setToken] = useState(() => localStorage.getItem('token'));
 
     const login = (userToken) => {
         setToken(userToken);
+        localStorage.setItem('token', userToken);
     };
+    
 
     const logout = () => {
         setToken(null);
+        localStorage.removeItem('token');
     };
+    
 
     const isAuthenticated = !!token;
 

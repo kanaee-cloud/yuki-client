@@ -19,8 +19,9 @@ const Login = () => {
     try {
       const response = await apiClient.post("/login", { email, password });
       console.log(response.data);
+      console.log("Token : ", response.data.token)
       if (response.data.message === "Login successful") {
-        toast.success(`Welcome`, {
+        toast.success(`Welcome ${response.data.user.username}`, {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,
@@ -32,7 +33,7 @@ const Login = () => {
           transition: Bounce,
           onClose: () => {
             setTimeout(() => {
-              login('dummyToken');
+              login("dummyToken");
               navigate('/home');
             }, 500);
           },

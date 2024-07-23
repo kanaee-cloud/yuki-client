@@ -1,18 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthProvider.jsx";
 import { Bounce, ToastContainer, toast } from "react-toastify";
-import { jwtDecode }from 'jwt-decode';
+import { IoIosLogOut } from "react-icons/io";
 import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
-  const token = localStorage.getItem("token");
-  let username = '';
-
-  if(token){
-    const decoded = jwtDecode(token);
-    username = decoded.username;
-  }
-
   const navigate = useNavigate;
   const { logout } = useAuth();
   const handleSignOut = () => {
@@ -40,8 +32,14 @@ const Home = () => {
     <>
       <ToastContainer />
       <div className="h-screen">
-        Welcome, {username}
-        <button onClick={handleSignOut}>Logout</button>
+        <div className="flex p-4 items-center justify-between bg-[#100e34]">
+          <h1>Welcome</h1>
+          <div>
+            <button onClick={handleSignOut}>
+              <IoIosLogOut size={20} />
+            </button>
+          </div>
+        </div>
       </div>
     </>
   );
