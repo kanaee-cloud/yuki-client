@@ -33,7 +33,7 @@ const Login = () => {
           transition: Bounce,
           onClose: () => {
             setTimeout(() => {
-              login("dummyToken");
+              login("dummyToken", response.data.user.username);
               navigate('/home');
             }, 500);
           },
@@ -55,7 +55,7 @@ const Login = () => {
               <div className="flex flex-col gap-y-5 items-center">
                 <div className="mb-10">
                   <h1 className="text-2xl font-semibold">
-                    Yuki<span className="text-[#f9d949]">nime!</span>
+                    Boo<span className="text-[#f9d949]">ku!</span>
                   </h1>
                 </div>
                 <h1 className="text-xl font-semibold">Login</h1>
