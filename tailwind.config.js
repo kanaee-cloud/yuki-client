@@ -21,14 +21,18 @@ module.exports = {
       colors: {
         primary: '#ffff',
         site: '#121212',
+        semiblack: '#212121',
         accent: '#1db954',
         secondary: '#535353',
         tertiary: '#b3b3b3'
       },
       backgroundImage: {
-        main: "linear-gradient(153deg, rgba(0,0,0,0.8295693277310925) 0%, rgba(0,0,0,0.4150035014005602) 100%),url('./assets/bg-main.jpg')",
+        main: "url('./assets/bg-main.jpg')",
         responsive: "linear-gradient(153deg, rgba(0,0,0,0.8295693277310925) 0%, rgba(0,0,0,0.4150035014005602) 100%),url('./assets/main-bg-responsive.jpg')",
       },
+      filter: {
+        custom : 'blur(8px)',
+      }
     },
   },
   plugins: [],

@@ -2,50 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
-.neumorphism {
-  border-radius: 50px;
-  background: #0d0b28;
-  box-shadow: 9px 9px 17px #070614, -5px -5px 17px #1d1a50;
-}
-
 .glassmorphism {
-  background:  #100e34;
-  box-shadow: 0 8px 32px 0  #100e34;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
+.neumorphism {
+  /* border-radius: 50px; */
+  background: #212121;
+  box-shadow: 9px 9px 17px #070614, -5px -5px 17px #212121;
+}
 
+.box {
+  background: #212121;
+  /* box-shadow: 0 8px 32px 0  #212121; */
+  border-radius: 10px;
+  /* border: 1px solid rgba(255, 255, 255, 0.18); */
+}
 .btn {
+  background-color: #099ffc;
+  color: #100e34;
+  transition: all 0.5s ease;
+}
+
+.btn:hover {
   background-color: transparent;
   color: #099ffc;
   border: 1px solid #099ffc;
   border-radius: 10px;
 }
 
-.btn:hover {
-  background-color: #099ffc;
+
+.btn-main {
+  background-color: #1db954;
   color: #100e34;
-  transition: all 0.5s ease;
+  border: 1px solid #1db954;
+  border-radius: 30px;
 }
 
-.btn-yellow {
+.btn-main:hover {
   background-color: transparent;
-  color: #f9d949;
-  border: 1px solid #f9d949;
-  border-radius: 10px;
-}
-
-.btn-yellow:hover {
-  background-color: #f9d949;
-  color: #100e34;
+  color: #1db954 ;
   transition: all 0.5s ease;
 }
 
 @layer base {
   body {
-    @apply font-primary text-lg leading-8 text-white  bg-responsive lg:bg-main bg-no-repeat bg-cover;
+    @apply font-primary text-lg leading-8 text-white glassmorphism  bg-main bg-cover bg-fixed bg-no-repeat;
   }
   .h2 {
     @apply font-primary text-[32px] mb-6 tracking-[10%] uppercase;

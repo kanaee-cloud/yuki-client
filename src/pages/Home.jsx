@@ -35,7 +35,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchTopManga = async () => {
-      const mangaData = await getMangaResponse("top/manga", "limit=5");
+      const mangaData = await getMangaResponse("top/manga", "limit=10");
       setTopManga(mangaData);
     };
 
@@ -46,9 +46,9 @@ const Home = () => {
     <>
       <ToastContainer />
       <div className="h-screen">
-        <div className="flex p-4 items-center justify-between bg-[#100e34]">
+        <div className="flex p-4 items-center justify-between bg-semiblack">
           <h1 className="font-semibold text-2xl">
-            Yuki<span className="text-[#f9d949]">nime</span>
+            Boo<span className="text-[#f9d949]">ku!</span>
           </h1>
           <div>
             <button onClick={handleSignOut}>
@@ -59,9 +59,13 @@ const Home = () => {
 
         <div className="container mx-auto">
           <div className="p-8">
-            <h1 className="text-lg">Hola, {user} !</h1>
+            <div className="p-4">
+              <h1 className="text-lg font-semibold">Hola, <span className="text-[#f9d949]">{user}</span> !</h1>
+            </div>
+            <div className="p-6 box ">
+              {topManga ? <MangaList api={topManga} /> : <p>Loading...</p>}
+            </div>
           </div>
-          {topManga ? <MangaList api={topManga} /> : <p>Loading...</p>}
         </div>
       </div>
     </>
