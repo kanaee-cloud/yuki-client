@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Invalid from "./pages/Invalid";
 import { AuthProvider } from "./contexts/AuthProvider.jsx";
 import PrivateRoutes from "./PrivateRoutes";
+import Profile from "./pages/Profile.jsx";
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -21,6 +22,7 @@ function App() {
             <Route path="/" element={<Start />}></Route>
             <Route element={<PrivateRoutes />}>
               <Route path="/home" element={<Home />}></Route>
+              <Route path="/profile" element={<Profile />}></Route>
             </Route>
             <Route path="/invalid" element={<Invalid />}></Route>
           </Routes>

@@ -46,8 +46,8 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen">
-      <div className="flex justify-center h-full items-center">
+    <div className="h-screen bg-main bg-no-repeat bg-cover">
+      <div className="flex glassmorphism justify-center h-full items-center">
         <ToastContainer />
         <form onSubmit={handleSubmit}>
           <div className="flex px-10 py-16 box ">

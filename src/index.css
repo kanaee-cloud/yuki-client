@@ -50,7 +50,7 @@
 
 @layer base {
   body {
-    @apply font-primary text-lg leading-8 text-white glassmorphism  bg-main bg-cover bg-fixed bg-no-repeat;
+    @apply font-primary text-lg leading-8 text-white bg-site;
   }
   .h2 {
     @apply font-primary text-[32px] mb-6 tracking-[10%] uppercase;
