@@ -1,67 +1,38 @@
-import { useState } from 'react';
-import apiClient from '../utils/api';
+import { useState } from 'react'
+import apiClient from '../utils/api'
 
-const ProfileUpload = () => {
-  const [file, setFile] = useState(null);
-  const [preview, setPreview] = useState(null);
-  const [message, setMessage] = useState('');
 
-  const onChange = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      const selectedFile = e.target.files[0];
-      setFile(selectedFile);
-      const objectUrl = URL.createObjectURL(selectedFile);
-      setPreview(objectUrl);
-    } else {
-      setFile(null); 
-      setPreview(null); 
-    }
-  };
+const Profile = () => {
+  const [selectedFile, setSelectedFile] = useState(null)
+  const [message, setMessage] = useState('')
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    if (!file) {
-      setMessage('Please select a file before submitting');
-      return;
-    }
-    
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0])
+  }
+
+  const handleUpload = async () => {
     const formData = new FormData();
-    formData.append('profileImage', file);
+    formData.append('profilePic', selectedFile);
 
-    try {
-      const response = await apiClient.post('/profile', formData, {
+    try{
+      const response = await apiClient.post('upload-profile-pic', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
-          'Authorization': `Bearer dummyToken`, 
-        },
-      });
-      setMessage('Profile image uploaded successfully');
-      setPreview(null); 
-    } catch (err) {
-      if (err.response && err.response.status === 500) {
-        setMessage('There was a problem with the server');
-      } else {
-        setMessage(err.response ? err.response.data.message : 'An error occurred');
-      }
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+      setMessage('File uploaded successfully: ' + response.data.filePath)
+    } catch (error) {
+      setMessage('Error uploading file: ' + error)
     }
-  };
+  }
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
-        <div>
-          <input type="file" onChange={onChange} />
-        </div>
-        {preview && (
-          <div>
-            <img src={preview} alt="Preview" style={{ width: '100px', height: '100px', objectFit: 'cover' }} />
-          </div>
-        )}
-        <input type="submit" value="Upload" />
-      </form>
-      <p>{message}</p>
+      <input type="file" onChange={handleFileChange} />
+      <button onClick={handleUpload}>Upload</button>
+      {message && <p>{message}</p>}
     </div>
-  );
-};
+  )
+}
 
-export default ProfileUpload;
+export default Profile
